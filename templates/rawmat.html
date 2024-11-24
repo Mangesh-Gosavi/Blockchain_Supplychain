@@ -15,40 +15,42 @@
         }
 
         .container {
-            display: flexbox;
+            display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            justify-content: center;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
         }
 
-        .container input {
-            margin-bottom: 7px;
-            width: 100%; /* Make the inputs stretch to full width */
-            padding: 5px; /* Add some padding for better appearance */
+        .container h1 {
+            text-align: center;
         }
 
-        .container button[type="submit"] {
-            background-color: #2980b9;
-            color: white;
-            margin: 0 10px; /* Adjust margin to create space between buttons */
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 3px;
+        .container div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
         }
-        .container button[type="button"] {
+
+        .container div label {
+            margin-bottom: 5px;
+        }
+
+        .container div input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .container button {
             background-color: #2980b9;
             color: white;
-            margin: 0 10px; /* Adjust margin to create space between buttons */
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 3px;
         }
     </style>
 </head>

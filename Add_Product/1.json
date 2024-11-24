@@ -1,0 +1,11 @@
+{
+    "blockid": 1,
+    "name": "Icecream",
+    "temprature": "18",
+    "price": "100",
+    "brand": "Amul",
+    "addby": "Admin",
+    "status": "Mined",
+    "prevhash": "0000000000000000",
+    "hash": "e65eca45ebe2d617d7536d23146d421f0f8c185bdd01e352da66187c71bd53bf"
+}

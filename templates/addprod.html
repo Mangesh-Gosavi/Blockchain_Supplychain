@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .container div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .container div label {
+            margin-bottom: 5px;
+        }
+
+        .container div input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .container button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form class="container" action="/add_prod" method="POST">
+        <h1>BLOCKCHAIN IN SUPPLYCHAIN MANAGEMENT - ADD PRODUCT</h1>
+        <div>
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" placeholder="Product Name">
+        </div>
+        <div>
+            <label for="temprature">Temprature:</label>
+            <input type="text" id="temprature" name="temprature" placeholder="Temprature">
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" placeholder="Price">
+        </div>
+        <div>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" placeholder="Brand">
+        </div>
+        <div>
+            <label for="addby">Added By:</label>
+            <input type="text" id="addby" name="addby" placeholder="Added By">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

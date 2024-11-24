@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .container div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .container div label {
+            margin-bottom: 5px;
+        }
+
+        .container div input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .container button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form class="container" action="/reg" method="POST">
+        <h1>BLOCKCHAIN IN SUPPLYCHAIN MANAGEMENT - REGISTRATION</h1>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Email">
+        </div>
+        <div>
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Mobile">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+        <div>
+            <label for="repassword">Re-enter Password:</label>
+            <input type="password" id="repassword" name="repassword" placeholder="Re-enter Password">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

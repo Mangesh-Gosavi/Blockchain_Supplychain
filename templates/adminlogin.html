@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+      body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container h1 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .container input {
+            margin-bottom: 7px;
+            width: 100%; /* Make the inputs stretch to full width */
+            padding: 5px; /* Add some padding for better appearance */
+        }
+
+        .container input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 0 10px; /* Adjust margin to create space between buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>BlOCKCHAIN IN SUPPLYCHAIN MANAGEMENT - ADMIN LOGIN</h1>
+    <form class="container" action="/admin" method="POST">
+        <div class="container">
+            
+            <label>Email</label>
+            <input type="text" placeholder="Email" name="email"/><br>
+            <label>Password</label>
+            <input type="password" placeholder="Password" name="password"/><br><br>
+            <input type="submit" value="Admin Login"/><br>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: skyblue;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+    
+        table {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>EMPLOYEES IN BLOCKCHAIN</h1>
+    <div class="container">
+        <table>
+            <tr>
+                <th>BlockId</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Password</th>
+
+            </tr>
+
+            {% for data in cust %}
+            <tr>
+                
+                <td>{{ data['blockid'] }}</td>
+                <td>{{ data['email'] }}</td>
+                <td>{{ data['mobile'] }}</td>
+                <td>{{ data['password'] }}</td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

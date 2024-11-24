@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: skyblue;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+    
+        table {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .container input {
+            align-items: center;
+            width: 55%; /* Make the inputs stretch to full width */
+            padding: 5px; /* Add some padding for better appearance */
+        }
+
+        .container input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 0 10px; /* Adjust margin to create space between buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Reports</h1>
+    <form class="container" action="/viewreport" method="GET">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>SrNo</th>
+                    <th>ReportBy</th>
+                    <th>Product Name</th>
+                    <th>Report</th>
+                </tr>
+                {% for data in rep_data %}
+                <tr>
+                    <td>{{ data['srno'] }}</td>
+                    <td>{{ data['reportby'] }}</td>
+                    <td>{{ data['prodname'] }}</td>
+                    <td>{{ data['report'] }}</td>    
+                </tr>
+                {% endfor %}
+            </table><br><br>
+        </div>
+    </form>
+</body>
+</html>

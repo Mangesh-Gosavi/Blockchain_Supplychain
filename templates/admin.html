@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+             
+        }
+
+        .dropdown {
+            margin-right: 20px; /* Adjust margin as needed */
+        }
+
+        .container input[type="button"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 0 10px; /* Adjust margin to create space between buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>WELCOME ADMIN</h1>
+    </div>
+    <div class="container">
+        <div style="display: flex;flex-direction: row;">
+            <div class="dropdown" >
+                <input type="button" value="Add Product" onclick="add_prod()">
+                </select>
+            </div>
+            <div class="dropdown">
+                <input type="button" value="View Product" onclick="view_prod()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Add Employee" onclick="add_emp()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="View Employee" onclick="view_emp()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Reports" onclick="view_report()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Find File" onclick="find_file()">
+            </div>
+        </div>
+    </div>
+    <script>
+        function add_emp() {   
+            window.location.href = "/addemp";
+        }
+        function view_emp() {   
+        window.location.href = "/viewemp";
+        }
+        function add_prod() {   
+        window.location.href = "/addprod";
+        }
+        function view_prod() {   
+        window.location.href = "/viewprod";
+        }
+        function view_report() {   
+        window.location.href = "/viewreport";
+        }
+        function find_file() {   
+        window.location.href = "/find_file";
+        }
+    </script>
+</body>
+</html>

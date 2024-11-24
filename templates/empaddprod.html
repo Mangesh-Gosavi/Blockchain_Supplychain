@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: skyblue;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+    
+        table {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .container input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 0 10px; /* Adjust margin to create space between buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>PRODUCTS IN BLOCKCHAIN</h1>
+    <form class="container" action="/globalprod" method="GET">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>BlockId</th>
+                    <th>Name</th>
+                    <th>Temprature</th>
+                    <th>Price</th>
+                    <th>Brand</th>
+                </tr>
+
+                {% for data in prod %}
+                <tr>
+                    
+                    <td>{{ data['blockid'] }}</td>
+                    <td>{{ data['name'] }}</td>
+                    <td>{{ data['temprature'] }}</td>
+                    <td>{{ data['price'] }}</td>
+                    <td>{{ data['brand'] }}</td>
+                </tr>
+                
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+</body>
+</html>

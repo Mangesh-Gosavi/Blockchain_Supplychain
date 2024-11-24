@@ -3,3 +3,9 @@ In this blockchain-based supply chain system developed using Flask, the primary 
 Additionally, various stakeholders in the supply chain, such as raw suppliers, manufacturers, suppliers, and retailers, are allowed to update the status of products as they progress along the chain. This could include status updates like "sent","received". As products move through different stages, their statuses are updated accordingly, providing a comprehensive view of their journey.
 
 To enhance tracking and monitoring, a "tracker" feature is implemented, offering a comprehensive overview of a product's journey through the supply chain. This tracker consolidates all the status updates and relevant information associated with the product, allowing stakeholders to easily trace its path from raw materials to the end consumer. The implementation encapsulates user authentication to distinguish between various roles in the supply chain, ensuring the appropriate access and actions for employees, administrators, suppliers, and retailers. Through this system, the blockchain acts as an immutable ledger, enhancing trust and visibility within the supply chain ecosystem.
+
+rawmaterial: https://blockchain-supplychain.vercel.app/rawmat
+manufacturer: https://blockchain-supplychain.vercel.app/manufac
+supplier: https://blockchain-supplychain.vercel.app/supplier
+retailer: https://blockchain-supplychain.vercel.app/retailer
+

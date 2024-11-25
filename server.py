@@ -7,7 +7,7 @@ import hashlib
 import datetime
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://blockchain-supplychain.onrender.com/"]))
 
 def get_previous_hash():
     folder_path = 'emplogin'

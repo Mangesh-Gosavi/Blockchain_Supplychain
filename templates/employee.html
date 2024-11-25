@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Employee</title>
+    <style>
+        /* General body styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 2rem; /* Responsive font size */
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Container holding buttons */
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center;
+            gap: 20px; /* Add gap between buttons */
+            margin-top: 20px;
+            padding: 10px;
+            width: 90%; /* Ensure it adapts to smaller screens */
+            max-width: 600px; /* Max width for larger screens */
+        }
+
+        /* Button styling */
+        .container input[type="button"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Full width on smaller screens */
+            max-width: 200px; /* Limit width on larger screens */
+        }
+
+        .container input[type="button"]:hover {
+            background-color: #21618c; /* Darker blue on hover */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem; /* Smaller heading font size */
+            }
+
+            .container {
+                width: 95%;
+                max-width: 500px; /* Limit width for smaller screens */
+            }
+
+            .container input[type="button"] {
+                font-size: 0.9rem; /* Slightly smaller button text */
+                padding: 10px 20px;
+            }
+        }
+
+        /* Larger screen adjustments */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 2.5rem; /* Larger heading font size */
+            }
+
+            .container input[type="button"] {
+                font-size: 1.1rem; /* Slightly larger button text */
+                padding: 15px 30px;
+            }
+        }
+
+        /* Very large screen adjustments (desktops, large monitors) */
+        @media (min-width: 2560px) {
+            h1 {
+                font-size: 3rem; /* Larger heading for very big screens */
+            }
+
+            .container input[type="button"] {
+                font-size: 1.2rem;
+                padding: 18px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color:rgb(50, 50, 155)">WELCOME EMPLOYEE</h1>
+    </div>
+    <div class="container">
+        <div class="dropdown">
+            <input type="button" value="Add product" onclick="add_prod()">
+        </div>
+        <div class="dropdown">
+            <input type="button" value="View product" onclick="view_prod()">
+        </div>
+        <div class="dropdown">
+            <input type="button" value="Reports" onclick="view_report()">
+        </div>
+        <div class="dropdown">
+            <input type="button" value="Logout" onclick="logout()">
+        </div>
+    </div>
+    <script>
+        function add_prod() {   
+            window.location.href = "/addprod";
+        }
+
+        function view_prod() {   
+            window.location.href = "/globalprod";
+        }
+
+        function view_report() {   
+            window.location.href = "/viewreport";
+        }
+        function view_prod() {   
+            window.location.href = "/globalprod";
+        }
+        function logout() {   
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

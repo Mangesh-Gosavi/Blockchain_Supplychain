@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retailer</title>
+    <style>
+           body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flexbox;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container input {
+            width: 95%; /* Make the inputs stretch to full width */
+            padding: 5px; /* Add some padding for better appearance */
+        }
+
+        .container button[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button[type="button"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-top: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Retailer</h1>
+    <form class="container" action="/tracker" method="POST">
+        <label for="status">Enter Role: </label>
+        <input type="text" id="role" name="role" required><br><br>
+        <input type="hidden" name="role" value="manufacturer">
+        <label for="temperature">Enter Temperature: </label>
+        <input type="text" id="temperature" name="temperature" required><br><br>
+        <label for="location">Enter Location: </label>
+        <input type="text" id="location" name="location" required><br><br>
+        <label for="status">Enter Status (received): </label>
+        <input type="text" id="status" name="status" required><br><br>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="view_prod()">View Products</button>
+        <h1>Report</h1>
+        <button type="button" onclick="reppage()">Report</button>
+    </form>
+    <script>
+        function view_prod() {   
+        window.location.href = "/globalprod";
+        }
+        function reppage() {
+            window.location.href = "/report_page";
+        }
+    </script>
+</body>
+</html>

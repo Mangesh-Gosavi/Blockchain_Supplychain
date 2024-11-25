@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find File</title>
+    <style>
+        /* Reset default styles and add a base font */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Container styles */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px; /* Set max-width to prevent stretching on large screens */
+            box-sizing: border-box;
+        }
+
+        /* Title styling */
+        h1 {
+            text-align: center;
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Form label */
+        .container label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            align-self: flex-start;
+        }
+
+        /* Input field styling */
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        .container button[type="submit"],
+        .container button[type="button"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effect for buttons */
+        .container button[type="submit"]:hover,
+        .container button[type="button"]:hover {
+            background-color: #21618c;
+        }
+
+        /* Adjustments for mobile screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem; /* Smaller font size on mobile */
+            }
+
+            .container {
+                padding: 15px;
+                max-width: 90%; /* Allow the form to take more space on small screens */
+            }
+
+            .container input {
+                font-size: 0.9rem; /* Slightly smaller input fields */
+            }
+
+            .container button {
+                font-size: 0.9rem; /* Smaller buttons on mobile */
+            }
+        }
+
+        /* Adjustments for large screens */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px; /* Increase the form's max-width on larger screens */
+                padding: 30px; /* More padding for spacious layout */
+            }
+
+            h1 {
+                font-size: 2.5rem; /* Larger heading on larger screens */
+            }
+
+            .container input {
+                font-size: 1.1rem; /* Slightly larger input fields */
+            }
+
+            .container button {
+                font-size: 1.1rem; /* Larger buttons */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:rgb(50, 50, 155)">Find FileName</h1>
+    <form class="container" action="/findfile" method="POST">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

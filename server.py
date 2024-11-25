@@ -27,18 +27,18 @@ def home():
 
 @app.route('/employee', methods=['POST'])
 def cust():
-    #Taking form data
     email = request.form.get('email')
     password = request.form.get('password')
 
-    #Checking if any field is empty
     if not all([email, password]):
         return "All fields must be filled."
 
-    #Checking if the provided email and password match the data in the folder
-    folder_path = 'emplogin'
-    found = False
+    folder_path = os.path.join(os.getcwd(), 'emplogin')  # Absolute path to the 'emplogin' folder
 
+    if not os.path.exists(folder_path):
+        return f"Folder {folder_path} does not exist."
+
+    found = False
     for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
         with open(file_path, 'r') as file:
@@ -48,7 +48,6 @@ def cust():
                 break
 
     if found:
-        # If email and password matches, take the user to the next page
         return render_template('employee.html')
     else:
         return "Login failed. Please check your email and password."

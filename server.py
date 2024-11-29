@@ -7,7 +7,7 @@ import os
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://blockchain-supplychain.onrender.com/"])
 
 # MongoDB connection
 client = MongoClient("mongodb+srv://gosavimangesh462:0227Namdeo@cluster0.dnjkc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # Update with your MongoDB URI

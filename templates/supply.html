@@ -145,7 +145,7 @@
                 .then(response => response.text())  
                 .then(data => {
                     if (data.includes("Login successful")) {
-                        window.location.href = "/employeePage";  
+                        window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";  
                     } else {
                         alert("Login Failed: " + data);
                     }
@@ -158,7 +158,7 @@
         });
 
         function adminLogin() {
-            window.location.href = "/adminlogin";  
+            window.location.href = "https://blockchain-supplychain.onrender.com/adminlogin";  
         }
     </script>
 </body>

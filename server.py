@@ -1,16 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for ,jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
+from dotenv import load_dotenv
+load_dotenv()
 import hashlib
 import datetime
 import os
 
-
 app = Flask(__name__)
-CORS(app, origins=["https://blockchain-supplychain.onrender.com/"])
+CORS(app)
 
+mongo_uri = os.getenv("MONGO_URI")
 # MongoDB connection
-client = MongoClient("mongodb+srv://gosavimangesh462:0227Namdeo@cluster0.dnjkc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # Update with your MongoDB URI
+client = MongoClient(mongo_uri)  # Update with your MongoDB URI
 db = client.supplychain
 emplogin_collection = db.emplogin
 admin_collection = db.admin
@@ -27,19 +29,43 @@ def get_previous_hash(collection):
 def home():
     return render_template("supply.html")
 
+@app.route('/rawmat', methods=['GET'])
+def rawmat():
+        return render_template("rawmat.html")
+
+@app.route('/manufac', methods=['GET'])
+def manufac():
+        return render_template("manufac.html")
+
+@app.route('/supplier', methods=['GET'])
+def supplier():
+        return render_template("supplier.html")
+
+@app.route('/retailer', methods=['GET'])
+def retailer():
+        return render_template("retailer.html")
+
+@app.route('/employeePage')
+def employeepage():
+    return render_template("employee.html")
+
 @app.route('/employee', methods=['POST'])
 def cust():
     email = request.form.get('email')
     password = request.form.get('password')
-    if not all([email, password]):
-        return "All fields must be filled."
 
-    # Check if credentials exist in MongoDB
+    if not all([email, password]):
+        return jsonify({"status": "error", "message": "All fields must be filled."})
+
     user = emplogin_collection.find_one({"email": email, "password": password})
     if user:
-        return render_template('employee.html')
+        return jsonify({"status": "success", "message": "Login successful"})
     else:
-        return "Login failed. Please check your email and password."
+        return jsonify({"status": "error", "message": "Login failed. Please check your email and password."})
+
+@app.route('/adminlogin')
+def adminlogin():
+    return render_template("adminlogin.html")
 
 @app.route('/admin', methods=['POST'])
 def admin():
@@ -128,10 +154,23 @@ def add_prod():
     except Exception as e:
         return f"An error occurred: {str(e)}"
 
+@app.route('/globalprodpage')
+def globalprodpage():
+    return render_template("empaddprod.html")
+    
+@app.route('/globalprod', methods=['GET'])
+def globalprod():
+    products = list(mined_collection.find({}, {"_id": 0}))
+    return jsonify(products)  
+
 @app.route('/viewprod', methods=['GET'])
 def viewprod():
     products = list(product_collection.find({}, {"_id": 0}))
-    return render_template("product.html", prod=products)
+    return jsonify(products)  
+
+@app.route('/viewprodpage')
+def viewprodpage():
+    return render_template("product.html")
 
 @app.route('/mineprod', methods=['GET'])
 def mine_block():
@@ -145,21 +184,39 @@ def mine_block():
 
         try:
             mined_collection.insert_one(product)
-            product_collection.delete_one({"blockid": product['blockid']})
+            product_collection.update_one(
+                {"blockid": product['blockid']},  # Find the product by its blockid
+                {"$set": {
+                    "prevhash": product['prevhash'],
+                    "status": product['status'],
+                    "hash": product['hash']
+                }}
+            )
             last_mined_hash = product['hash']
         except Exception as e:
             return f"An error occurred: {str(e)}"
 
-    return redirect(url_for('viewprod'))
+    return 'All products are mined'
+
+@app.route('/trackerpage')
+def trackerpage():
+    return render_template("tracker.html")
+
+@app.route('/trackeddata', methods=['GET'])
+def trackeddata():
+    trackeddata = list(tracker_collection.find({}, {"_id": 0}))
+    return jsonify(trackeddata) 
 
 @app.route('/tracker', methods=['POST'])
 def tracker():
+    name = request.form.get('name')
     role = request.form.get('role')
     status = request.form.get('status')
     temperature = request.form.get('temperature')
     location = request.form.get('location')
     timestamp = str(datetime.datetime.now())
     data = {
+        'name':name,
         'role': role,
         'status': status,
         'temperature': temperature,
@@ -172,6 +229,10 @@ def tracker():
         return "Data tracked successfully"
     except Exception as e:
         return f"An error occurred: {str(e)}"
+
+@app.route('/report_page')
+def report_page():
+    return render_template("viewrep.html")
 
 @app.route('/report', methods=['POST'])
 def report():
@@ -193,8 +254,11 @@ def report():
 @app.route('/viewreport', methods=['GET'])
 def viewreport():
     reports = list(report_collection.find({}, {"_id": 0}))
-    return render_template("viewrep.html", rep_data=reports)
+    return jsonify(reports) 
+
 
 if __name__ == '__main__':
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+

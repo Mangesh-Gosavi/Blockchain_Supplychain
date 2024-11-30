@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2rem; 
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; 
+            margin-top: 20px;
+            padding: 10px;
+            width: 90%;
+            max-width: 800px; 
+        }
+
+        .container input[type="button"] {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; 
+            max-width: 250px; 
+            box-sizing: border-box;
+        }
+
+        .container input[type="button"]:hover {
+            background-color: #21618c; 
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem; 
+            }
+
+            .container {
+                width: 95%;
+                max-width: 600px;
+            }
+
+            .container input[type="button"] {
+                font-size: 0.9rem;  
+                padding: 10px 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container input[type="button"] {
+                font-size: 1.1rem; 
+                padding: 15px 30px;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            h1 {
+                font-size: 3rem; 
+            }
+
+            .container input[type="button"] {
+                font-size: 1.2rem;
+                padding: 18px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color:white">WELCOME ADMIN</h1>
+    </div>
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <div class="dropdown">
+                <input type="button" value="Add Product" onclick="add_prod()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="View Product" onclick="view_prod()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Add Employee" onclick="add_emp()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="View Employee" onclick="view_emp()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Reports" onclick="view_report()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Track Product" onclick="find_file()">
+            </div>
+            <div class="dropdown">
+                <input type="button" value="Logout" onclick="logout()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function add_emp() {   
+            window.location.href = "/addemp";
+        }
+        function view_emp() {   
+            window.location.href = "/viewemp";
+        }
+        function add_prod() {   
+            window.location.href = "/addprod";
+        }
+        function view_prod() {   
+            window.location.href = "/viewprodpage";
+        }
+        function view_report() {   
+            window.location.href = "/report_page";
+        }
+        function find_file() {   
+            window.location.href = "/trackerpage";
+        }
+        function logout() {   
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

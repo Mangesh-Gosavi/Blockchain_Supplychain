@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: skyblue;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 30px;
+            margin: 10px;
+            height: 80vh;
+            width: 100%;
+            max-width: 1200px; 
+        }
+
+        h1 {
+            color: #2980b9;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        td {
+            background-color: #f4f4f4;
+        }
+
+        .container input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 20px 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .container input[type="submit"]:hover {
+            background-color: #21618c;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            .container input[type="submit"] {
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .container input[type="submit"] {
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            .container input[type="submit"] {
+                font-size: 0.9rem;
+            }
+
+            td {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:rgb(50, 50, 155)">Track Products</h1>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Role</th>
+                    <th>Temperature</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="reportsTable">
+                <!-- Reports rows will be dynamically populated here -->
+            </tbody>
+        </table><br><br>
+    </div>
+
+    <script>
+   
+        fetch('/trackeddata')
+            .then(response => response.json()) 
+            .then(trackeddata => {
+                const tableBody = document.querySelector("#reportsTable");
+                tableBody.innerHTML = '';
+
+                trackeddata.forEach(data => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${data.name || 'N/A'}</td>
+                        <td>${data.role || 'N/A'}</td>
+                        <td>${data.temperature || 'N/A'}</td>
+                        <td>${data.status || 'N/A'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching tracked data:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #87ceeb;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%; 
+            max-width: 600px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+
+        .container h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2980b9; 
+        }
+
+        /* Label styling */
+        .container div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            width: 100%; 
+        }
+
+        .container div label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .container div input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+
+        .container button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+
+        .container button:hover {
+            background-color: #21618c;
+        }
+
+        @media (max-width: 600px) {
+            .container h1 {
+                font-size: 1.5rem; 
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
+                max-width: 95%; 
+            }
+
+            .container button {
+                font-size: 1rem; 
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .container h1 {
+                font-size: 1.8rem; 
+            }
+
+            .container {
+                padding: 25px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .container {
+                max-width: 800px; 
+            }
+
+            .container h1 {
+                font-size: 2rem; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <form class="container" action="/reg" method="POST">
+        <h1 style="color:rgb(50, 50, 155)">BLOCKCHAIN IN SUPPLY CHAIN MANAGEMENT - REGISTRATION</h1>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Email" required />
+        </div>
+        <div>
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Mobile" required />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required />
+        </div>
+        <div>
+            <label for="repassword">Re-enter Password:</label>
+            <input type="password" id="repassword" name="repassword" placeholder="Re-enter Password" required />
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

@@ -135,7 +135,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            fetch('/employee', {
+            fetch('https://blockchain-supplychain.onrender.com/employee', {
                 method: 'POST',
                 body: new URLSearchParams({
                     email: email,

@@ -51,16 +51,13 @@ def employeepage():
 
 @app.route('/employee', methods=['POST'])
 def cust():
-    data = request.get_json()  
-    email = data.get('email')
-    password = data.get('password')
-    print(email, password)
+    email = request.form.get('email')
+    password = request.form.get('password')
 
     if not all([email, password]):
         return jsonify({"status": "error", "message": "All fields must be filled."})
 
     user = emplogin_collection.find_one({"email": email, "password": password})
-
     if user:
         return jsonify({"status": "success", "message": "Login successful"})
     else:

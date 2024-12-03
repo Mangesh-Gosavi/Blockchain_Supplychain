@@ -138,35 +138,31 @@
             fetch('https://blockchain-supplychain.onrender.com/employee', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', // Ensures Flask can parse the body
+                    'Content-Type': 'application/x-www-form-urlencoded', // Ensures proper encoding
                 },
                 body: new URLSearchParams({
                     email: email,
-                    password: password,
-                }),
+                    password: password
+                }).toString() // Ensure the data is properly encoded
             })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.text(); // Parse response as plain text
-                })
+                .then(response => response.json()) // Parse response as JSON
                 .then(data => {
-                    if (data.includes("Login successful")) {
+                    if (data.status === "success") {
                         window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";
                     } else {
-                        alert("Login Failed: " + data);
+                        alert("Login Failed: " + data.message);
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
                     alert("An error occurred, please try again.");
                 });
+        });
 
 
-            function adminLogin() {
-                window.location.href = "https://blockchain-supplychain.onrender.com/adminlogin";
-            }
+        function adminLogin() {
+            window.location.href = "https://blockchain-supplychain.onrender.com/adminlogin";
+        }
     </script>
 </body>
 

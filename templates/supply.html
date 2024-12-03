@@ -138,14 +138,11 @@
             fetch('https://blockchain-supplychain.onrender.com/employee', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', // Ensures proper encoding
+                     "Content-Type": "application/json",
                 },
-                body: new URLSearchParams({
-                    email: email,
-                    password: password
-                }).toString() // Ensure the data is properly encoded
+                body: JSON.stringify({ email: email, password: password }),
             })
-                .then(response => response.json()) // Parse response as JSON
+                .then(response => response.json()) 
                 .then(data => {
                     if (data.status === "success") {
                         window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";

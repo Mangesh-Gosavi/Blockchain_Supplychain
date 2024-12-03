@@ -63,6 +63,7 @@ def cust():
     else:
         return jsonify({"status": "error", "message": "Login failed. Please check your email and password."})
 
+
 @app.route('/adminlogin')
 def adminlogin():
     return render_template("adminlogin.html")

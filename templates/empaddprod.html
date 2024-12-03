@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products in Blockchain</title>
+    <style>
+        body {
+            display: flex ;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: skyblue;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 30px;
+            margin: 10px;
+            height: 80vh;
+            width: 100%;
+            max-width: 1200px; 
+        }
+
+        h1 {
+            color: #2980b9;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        td {
+            background-color: #f4f4f4;
+        }
+
+        .container input[type="submit"] {
+            background-color: #2980b9;
+            color: white;
+            margin: 20px 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .container input[type="submit"]:hover {
+            background-color: #21618c;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            .container input[type="submit"] {
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .container input[type="submit"] {
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            .container input[type="submit"] {
+                font-size: 0.9rem;
+            }
+
+            td {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:rgb(50, 50, 155)">PRODUCTS IN BLOCKCHAIN</h1>
+    <form class="container" action="https://blockchain-supplychain.onrender.com/globalprod" method="GET">
+        <div class="container">
+            <table id="productsTable">
+                <thead>
+                    <tr>
+                        <th>BlockId</th>
+                        <th>Name</th>
+                        <th>Temperature</th>
+                        <th>Price</th>
+                        <th>Brand</th>
+                        <th>Added By</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Product rows will be populated here -->
+                </tbody>
+            </table>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+
+        fetch('https://blockchain-supplychain.onrender.com/globalprod')
+            .then(response => response.json())  
+            .then(products => {
+                const tableBody = document.querySelector("#productsTable tbody");
+                products.forEach(product => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${product.blockid}</td>
+                        <td>${product.name}</td>
+                        <td>${product.temperature}</td>
+                        <td>${product.price}</td>
+                        <td>${product.brand}</td>
+                        <td>${product.addby}</td>
+                        <td>${product.status}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
+    </script>
+</body>
+</html>

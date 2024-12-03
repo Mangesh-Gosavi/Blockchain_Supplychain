@@ -8,7 +8,7 @@ import datetime
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://blockchain-supplychain.onrender.com"}})
 
 mongo_uri = os.getenv("MONGO_URI")
 # MongoDB connection

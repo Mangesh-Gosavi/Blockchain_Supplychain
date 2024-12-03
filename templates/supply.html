@@ -131,21 +131,29 @@
     <script>
 
         document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();  
+            event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             fetch('https://blockchain-supplychain.onrender.com/employee', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded', // Ensures Flask can parse the body
+                },
                 body: new URLSearchParams({
                     email: email,
-                    password: password
-                })
+                    password: password,
+                }),
             })
-                .then(response => response.text())  
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text(); // Parse response as plain text
+                })
                 .then(data => {
                     if (data.includes("Login successful")) {
-                        window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";  
+                        window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";
                     } else {
                         alert("Login Failed: " + data);
                     }
@@ -155,11 +163,10 @@
                     alert("An error occurred, please try again.");
                 });
 
-        });
 
-        function adminLogin() {
-            window.location.href = "https://blockchain-supplychain.onrender.com/adminlogin";  
-        }
+            function adminLogin() {
+                window.location.href = "https://blockchain-supplychain.onrender.com/adminlogin";
+            }
     </script>
 </body>
 

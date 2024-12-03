@@ -148,7 +148,7 @@
                 .then(response => response.json()) // Parse response as JSON
                 .then(data => {
                     if (data.status === "success") {
-                        window.location.href = "https://blockchain-supplychain.onrender.com/employeePage";
+                        window.location.href = "/employeePage";
                     } else {
                         alert("Login Failed: " + data.message);
                     }
